@@ -104,6 +104,7 @@ let todos;
       const checked = checkBox.checked;
 
       toggleCheckedTodo(todoId, checked);
+      saveTodos();
       render();
     }
 
@@ -122,7 +123,8 @@ let todos;
       const todoTitle = document.getElementById('inputBox').value
       const dueDateVal = document.getElementById('datePicker').value
 
-      updateTodo(idToChange, todoTitle, dueDateVal)
+      updateTodo(idToChange, todoTitle, dueDateVal);
+      saveTodos();
       render();
     }
 
@@ -135,12 +137,15 @@ let todos;
       todos.forEach(function (todo){
         
         const element = document.createElement('div');
+        element.className = 'todo-row';
+
         if (todo.isEditing === true) {
 
           // Input-text
           const inputBox = document.createElement('input');
           inputBox.type = 'text';
           inputBox.id = 'inputBox';
+          inputBox.className = 'todo-text';
           inputBox.value = todo.title;
           element.appendChild(inputBox);
 
@@ -149,24 +154,34 @@ let todos;
           datePicker.type = 'date';
           datePicker.id = 'datePicker';
           datePicker.value = todo.dueDate;
-          datePicker.style = 'margin-left: 4px';
+          datePicker.className = 'todo-date';
           element.appendChild(datePicker);
 
           // Update button
           const updateButton = document.createElement('button');
-          updateButton.innerText = 'Update'
-          updateButton.style = 'margin-left: 5px';
+          updateButton.innerText = 'Update';
+          updateButton.className = 'update-button';
           updateButton.dataset.todoId = todo.id;
           updateButton.onclick = onUpdate;
           element.appendChild(updateButton);
           
         } else {
           
-          element.innerText = todo.title + ' ' + todo.dueDate;
+          // Title
+          const todoTitle = document.createElement('div') 
+          todoTitle.innerText = todo.title;
+          element.appendChild(todoTitle);
+
+          // Due date
+          const todoDueDate = document.createElement('div')
+          todoDueDate.innerText = todo.dueDate; 
+          element.appendChild(todoDueDate);
+          //element.innerText = todo.title + ' ' + todo.dueDate;
           
           // CheckBox
           const checkBox = document.createElement('input');
           checkBox.type = 'checkbox';
+          checkBox.className = 'checkbox';
           checkBox.onchange = onCheck;
           checkBox.dataset.todoId = todo.id;
           if (todo.isDone === true) {
@@ -179,7 +194,7 @@ let todos;
           // EditButton
           const editButton = document.createElement('button');
           editButton.innerText = 'edit'
-          editButton.style = 'margin-left: 10px';
+          editButton.className = 'edit-button'
           editButton.onclick = onEdit;
           editButton.dataset.todoId = todo.id
           element.appendChild(editButton);
@@ -187,7 +202,8 @@ let todos;
           // DeleteButton
           const deleteButton = document.createElement('button');
           deleteButton.innerText = 'delete';
-          deleteButton.style = 'margin-left: 12px';
+          deleteButton.className = 'delete-button'
+          deleteButton.innerHTML = '<img class="trash-can" src="icons/trash-can.svg" alt="">'
           deleteButton.onclick = onDelete(todo);
           element.appendChild(deleteButton);
           

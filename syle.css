@@ -27,7 +27,7 @@ body{
   margin-bottom: 15px;
 }
 
-.todo-list{
+#todo-list{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,17 +35,23 @@ body{
   background-color: white;
   /* border: 1px solid; */
   /* padding: 20px; */
+  align-items: stretch;
 
   box-shadow: 0px 48px 100px 0px rgba(17, 12, 46, 0.15);
 }
 .todo-row{
   display: flex;
-  row-gap: 20px;
+  /* row-gap: 20px; */
   column-gap: 15px;
   align-items: center;
+  justify-content: space-between;
   /* border: 1px solid; */
   padding: 20px;
   transition: box-shadow 0.21s;
+}
+
+.todo-row:hover > .edit-button{
+  opacity: 1;
 }
 
 .todo-row:hover{
@@ -85,7 +91,7 @@ body{
   color: var(--secondary);
 }
 
-.edit-button{
+.edit-button, .update-button{
   background-color: white;
   color: var(--secondary);
   border-color: var(--secondary);
@@ -95,9 +101,14 @@ body{
   cursor: pointer;
 
   transition: all 0.21s;
+  opacity: 0;
 }
 
-.edit-button:hover{
+.update-button{
+  opacity: 1;
+}
+
+.edit-button:hover, .update-button:hover{
   background-color: var(--secondary);
   color: white;
   border: 1px white solid;
@@ -117,7 +128,7 @@ body{
   max-height: 100%;
 }
 
-.todo-text, .todo-date{
+#todo-title, #date-picker, .todo-text, .todo-date{
   background-color: transparent;
   border: none;
   border-bottom:3px solid var(--secondary);
@@ -125,7 +136,16 @@ body{
   transition: border-bottom 0.21s;
 }
 
-.todo-text:focus, .todo-date:focus{
+#todo-title:focus, #date-picker:focus{
   outline: none;
   border-bottom: 3px solid white;
+}
+
+.todo-text, .todo-date{
+  border-bottom:2px solid var(--background);
+}
+
+.todo-text:focus, .todo-date:focus{
+  outline: none;
+  border-bottom: 2px solid var(--secondary);
 }
