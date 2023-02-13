@@ -1,0 +1,131 @@
+:root {
+  --secondary: #af7eeb;
+  --background: #e3e9ff;
+}
+
+body{
+  background-color: var(--background);
+  padding: 50px 20px 50px 20px;
+}
+
+*{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.add-todo{
+  display: flex;
+  justify-content: center;
+  column-gap: 15px;
+  margin-bottom: 15px;
+}
+
+.todo-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* row-gap: 15px; */
+  background-color: white;
+  /* border: 1px solid; */
+  /* padding: 20px; */
+
+  box-shadow: 0px 48px 100px 0px rgba(17, 12, 46, 0.15);
+}
+.todo-row{
+  display: flex;
+  row-gap: 20px;
+  column-gap: 15px;
+  align-items: center;
+  /* border: 1px solid; */
+  padding: 20px;
+  transition: box-shadow 0.21s;
+}
+
+.todo-row:hover{
+  box-shadow: 0px 5px 15px 0px rgba(17, 12, 46, 0.15);
+}
+
+.checkbox {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid var(--secondary);
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  background-color: var(--secondary);
+}
+
+#add-todo-button{
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: all 0.21s ease-in-out;
+} 
+
+#add-todo-button:hover{
+  background-color: white;
+  color: var(--secondary);
+}
+
+.edit-button{
+  background-color: white;
+  color: var(--secondary);
+  border-color: var(--secondary);
+  border: 1px solid;
+  padding: 10px;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: all 0.21s;
+}
+
+.edit-button:hover{
+  background-color: var(--secondary);
+  color: white;
+  border: 1px white solid;
+}
+
+.delete-button{
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.trash-can{
+  object-fit: fill;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.todo-text, .todo-date{
+  background-color: transparent;
+  border: none;
+  border-bottom:3px solid var(--secondary);
+  font-size: medium;
+  transition: border-bottom 0.21s;
+}
+
+.todo-text:focus, .todo-date:focus{
+  outline: none;
+  border-bottom: 3px solid white;
+}
